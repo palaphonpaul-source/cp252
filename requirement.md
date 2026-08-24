@@ -1,4 +1,4 @@
-#Functional requirements
+# Functional requirements
 1.  User/Admin สามารถดูที่จอดรถว่างได้
 2. Admin สามารถเพิ่มประเภทลูกค้า
 3. เลทได้ 1 ชั่วโมง หลังจากเลยเวลาจอง
@@ -6,7 +6,8 @@
 5. มีระบบ login โดยใช้ email, Facebook, linked in และ Update profile เองได้ และ log out
 6. มี Promotion สำหรับสมาชิก Central  
 7. มี tab นึงในแอป สามารถแสดง รีวิว และเก็บความพึงพอใจได้
-#Non-functional requirements
+   
+# Non-functional requirements
 1. อัปเดตสถานะการจองของที่จอดทันที
 2. ระบบใช้งานง่าย
 3. ระบบต้องรองรับผู้ใช้งานพร้อมกันได้
