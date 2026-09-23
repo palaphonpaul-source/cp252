@@ -1,10 +1,12 @@
 class Expense {
   /**
-   Represents a Expense.
+   Represents an expense.
    @constructor
-   @param {date} date - The date of the expense.
-   @param {float} income - The author of the book.
- */
+   @param {string} date - The date of the expense.
+   @param {number|string} income - The income amount.
+   @param {number|string} expense - The expense amount.
+   @param {string} detail - A description of the expense.
+  */
   constructor(date, income, expense, detail) {
     this.date = date;
     this.income = parseFloat(income) || 0;
@@ -18,35 +20,51 @@ class Expense {
  * @class
  */
 class ExpenseModel {
+  /**
+   * Creates an empty expense model.
+   * @constructor
+   */
   constructor() {
     this.expenses = [];
   }
 
-/**
- * add expense numbers passed to the function.
- * @param {float} expense - A positive number.
- */
+  /**
+   * Adds an expense to the model.
+   * @param {Expense} expense - The expense to add.
+   * @returns {void}
+   */
   add(expense) {
     this.expenses.push(expense);
   }
 
-/**
- * return expense numbers from stack.
- * @return {array} expense - array of positive number
- */
-
+  /**
+   * Returns all expenses in the model.
+   * @returns {Expense[]} The stored expenses.
+   */
   getAll() {
     return this.expenses;
   }
 
+  /**
+   * Calculates the total income.
+   * @returns {number} The total income.
+   */
   getTotalIncome() {
     return this.expenses.reduce((sum, exp) => sum + exp.income, 0);
   }
 
+  /**
+   * Calculates the total expenses.
+   * @returns {number} The total expenses.
+   */
   getTotalExpense() {
     return this.expenses.reduce((sum, exp) => sum + exp.expense, 0);
   }
 
+  /**
+   * Calculates the money remaining after expenses.
+   * @returns {number} The remaining money.
+   */
   getMoneyLeft() {
     return this.getTotalIncome() - this.getTotalExpense();
   }
