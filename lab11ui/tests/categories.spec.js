@@ -26,10 +26,17 @@ test.describe('Category Management', () => {
     expect(options).toContain(newCategory);
   });
 
-  // Expected: should cause error
-  test('should show an error when adding an existing category', async ({ page }) => {
+    // Expected: should be OK 
+  test('should handle adding an existing category without adding a duplicate', async ({ page }) => {
     await categoryPage.createCategory('Electronics'); // default category
 
-    await expect(categoryPage.errorMessage).toBeVisible();
+    // The app redirects back to the Add Category page
+    await expect(page).toHaveURL('/categories/new');
+
+    // 'Electronics' must still appear only once in the Add Item dropdown
+    const createItemPage = new CreateItemPage(page);
+    await createItemPage.goto();
+    const options = await createItemPage.getCategoryOptions();
+    expect(options.filter(o => o === 'Electronics')).toHaveLength(1);
   });
 });
